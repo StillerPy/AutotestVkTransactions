@@ -13,10 +13,19 @@ class VKTransactionsTest {
         assertEquals(expected, result)
     }
     @Test
-    fun invalidArgs() {
+    fun invalidArgs1() {
         val card = "Maestro"
         val monthSum = -10
         val transaction = 500
+        val expected = VKTransactions.ERR_INVALID_ARGS
+        val result = VKTransactions.calculateCommission(card, monthSum, transaction)
+        assertEquals(expected, result)
+    }
+    @Test
+    fun invalidArgs2() {
+        val card = "Maestro"
+        val monthSum = 0
+        val transaction = 0
         val expected = VKTransactions.ERR_INVALID_ARGS
         val result = VKTransactions.calculateCommission(card, monthSum, transaction)
         assertEquals(expected, result)
